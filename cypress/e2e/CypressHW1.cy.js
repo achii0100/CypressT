@@ -1,10 +1,14 @@
 describe('Registration Case', () => {
   it('Registration', () => {
-    cy.visit('https://www.automationexercise.com/login');
+    cy.visit('http://automationexercise.com');
+    cy.contains("Home").should("be.visible");
+    cy.get('[href="/login"]').click();
+    cy.contains("New User Signup!").should("be.visible");
     cy.get('[data-qa="signup-name"]').type("testu1");
-    cy.get('[data-qa="signup-email"]').type("testur17+3@gmail.com");
+    cy.get('[data-qa="signup-email"]').type("testu123+4@gmail.com");
     cy.get('[data-qa="signup-button"]').click();
     cy.get('#id_gender1').click();
+    cy.contains("Enter Account Information").should("be.visible");
     cy.get('[data-qa="password"]').type("test555");
     cy.get('[data-qa="days"]').select(4);
     cy.get('[data-qa="months"]').select(5);
