@@ -22,6 +22,7 @@ describe('registrationEdit', () => {
     cy.get('#AccountFrm_newsletter1').click();
     cy.get('[name="agree"]').click();
     cy.contains('Continue').click();
+    cy.contains("Home").should("be.visible");
   })
 
   it('Login', () => {
