@@ -22,7 +22,7 @@ describe('registrationEdit', () => {
     cy.get('#AccountFrm_newsletter1').click();
     cy.get('[name="agree"]').click();
     cy.contains('Continue').click();
-  })
+   })
 
   it('Login', () => {
     cy.visit('https://automationteststore.com')
@@ -30,8 +30,22 @@ describe('registrationEdit', () => {
     cy.contains("Login or register").click();
     cy.logIn("test6","test7")
     cy.contains("My Account").should("be.visible");
-  })
+   })
 
+    it('Edit Acc Info', () => {
+  cy.visit('https://automationteststore.com');
+  cy.contains("Login or register").click();
+  cy.logIn("test6","test7");
+  cy.contains('My Account').should('be.visible');
+  cy.get('#maincontainer').contains('Edit account details').click();
+  cy.get('[id="AccountFrm_firstname"]').clear().type('Achii1');
+  cy.get('[id="AccountFrm_lastname"]').clear().type('Tsiklauri2');
+  cy.get('[id="AccountFrm_email"]').clear().type('achii010@gmail.com');
+  cy.get('[id="AccountFrm_telephone"]').clear().type(6669998881);
+  cy.get('[id="AccountFrm_fax"]').clear().type(5551);
+  cy.get('[title="Continue"]').click();
+  cy.contains('Success: Your account has been successfully updated.').should('be.visible');
+ })
 
   it('Edit Address', () => {
   cy.visit('https://automationteststore.com');
@@ -40,12 +54,11 @@ describe('registrationEdit', () => {
   cy.contains('My Account').should('be.visible');
   cy.get('#maincontainer').contains('Edit account details').click();
   cy.get('#maincontainer').contains('Manage Address Book').click();
-  cy.get('[title="Edit"]').click();
-  cy.get('[id="AddressFrm_address_1"]').clear();
-  cy.get('[id="AddressFrm_address_1"]').type("test4");
+  cy.get('button[title="Edit"]').click();
+  cy.get('[id="AddressFrm_address_1"]').clear().type("test4");
   cy.get('[title="Continue"]').click();
   cy.contains('Your address has been successfully updated').should('be.visible');
-  });
+ });
 
 it('Edit Password', () => {
   cy.visit('https://automationteststore.com');
