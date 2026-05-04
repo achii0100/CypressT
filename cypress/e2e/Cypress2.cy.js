@@ -1,6 +1,8 @@
 describe('registrationEdit', () => {
+  beforeEach(()=>{
+    cy.visit('/')
+  });
   it('Reg', () => {
-    cy.visit('https://automationteststore.com')
     cy.contains("Login or register").should("be.visible");
     cy.contains("Login or register").click();
     cy.get('[title="Continue"]').click();
@@ -26,7 +28,6 @@ describe('registrationEdit', () => {
   })
 
   it('Login', () => {
-    cy.visit('https://automationteststore.com')
     cy.contains("Login or register").should("be.visible");
     cy.contains("Login or register").click();
     cy.logIn("test6", "test7")
@@ -34,7 +35,6 @@ describe('registrationEdit', () => {
   })
 
   it('Edit Acc Info', () => {
-    cy.visit('https://automationteststore.com');
     cy.contains("Login or register").click();
     cy.logIn("test6", "test7");
     cy.contains('My Account').should('be.visible');
@@ -49,7 +49,6 @@ describe('registrationEdit', () => {
   })
 
   it('Edit Address', () => {
-    cy.visit('https://automationteststore.com');
     cy.contains("Login or register").click();
     cy.logIn("test6", "test7");
     cy.contains('My Account').should('be.visible');
@@ -62,7 +61,6 @@ describe('registrationEdit', () => {
   });
 
   it('Edit Password', () => {
-    cy.visit('https://automationteststore.com');
     cy.contains("Login or register").click();
     cy.logIn("test6", "test7");
     cy.contains('My Account').should('be.visible');
