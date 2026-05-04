@@ -1,11 +1,14 @@
 describe('Registration Case', () => {
   it('Registration', () => {
+    const email = 'test+'+Date.now()+'@gmail.com';
+    const name = 'test'+Date.now();
+
     cy.visit('http://automationexercise.com');
     cy.contains("Home").should("be.visible");
     cy.get('[href="/login"]').click();
     cy.contains("New User Signup!").should("be.visible");
-    cy.get('[data-qa="signup-name"]').type("testu1");
-    cy.get('[data-qa="signup-email"]').type("testu123+4@gmail.com");
+    cy.get('[data-qa="signup-name"]').type(name);
+    cy.get('[data-qa="signup-email"]').type(email);
     cy.get('[data-qa="signup-button"]').click();
     cy.contains("Enter Account Information").should("be.visible");
     cy.get('#id_gender1').click();
@@ -28,9 +31,10 @@ describe('Registration Case', () => {
     cy.get('[data-qa="create-account"]').click();
     cy.contains("Account Created!").should("be.visible");
     cy.get('[data-qa="continue-button"]').click();
-    cy.contains("Logged in as testu1").should("be.visible");
+    cy.contains("Logged in as "+name).should("be.visible");
     cy.get('[href="/delete_account"]').click();
     cy.contains("Account Deleted!").should("be.visible");
     cy.get('[data-qa="continue-button"]').click();
+    cy.contains("Home").should("be.visible");
   })
 })
