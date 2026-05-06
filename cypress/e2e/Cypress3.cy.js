@@ -9,7 +9,6 @@ describe('template spec', () => {
     cy.fixture('userData').then((info) => {
       const random = Date.now();
       user = {
-        ...info,
         name: info.name + random,
         email: info.email + random + '@gmail.com',
         pass: info.pass + random
@@ -51,7 +50,7 @@ describe('template spec', () => {
     cy.contains("Home").should("be.visible");
   })
 
-  
+
   it('incLogin', () => {
     cy.contains("Home").should("be.visible");
     cy.logIn(user.email, user.pass);
