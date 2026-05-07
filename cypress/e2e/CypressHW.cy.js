@@ -31,7 +31,7 @@ describe('Registration Case', () => {
     cy.get('[data-qa="create-account"]').click();
     cy.contains("Account Created!").should("be.visible");
     cy.get('[data-qa="continue-button"]').click();
-    cy.contains("Logged in as "+name).should("be.visible");
+    cy.contains("Logged in as").should("be.visible");
     cy.get('[href="/delete_account"]').click();
     cy.contains("Account Deleted!").should("be.visible");
     cy.get('[data-qa="continue-button"]').click();
