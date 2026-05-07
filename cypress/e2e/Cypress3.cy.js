@@ -1,6 +1,6 @@
 let user
 
-describe('template spec', () => {
+describe('reg-logIn', () => {
   beforeEach(() => {
     cy.visit('/')
   })
